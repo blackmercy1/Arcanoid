@@ -480,6 +480,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _asteroidsConfig: {fileID: 11400000, guid: e0db098273b7cbb44a1b98e026d006d5, type: 2}
+  _smallAsteroidsConfig: {fileID: 11400000, guid: 0e65b45c413818243a38bcd6532e94df, type: 2}
   _spawnRateRange:
     _min: 1
     _max: 5

@@ -17,7 +17,7 @@ namespace Asteroids.AsteroidsGenerator
             _gameArea = gameArea;
         }
 
-        public void PlaceAsteroid(Asteroid asteroid)
+        public void PlaceAsteroid(Asteroid asteroid, Vector2 position)
         {
             var transform = asteroid.transform;
 

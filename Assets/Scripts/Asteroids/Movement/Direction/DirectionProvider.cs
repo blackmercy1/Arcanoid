@@ -1,15 +1,18 @@
 using Asteroids.AsteroidsGenerator;
 using UnityEngine;
+using UpdatesSystem;
 
 namespace Asteroids.Movement.Direction
 {
-    public class DirectionProvider : IDirectionProvider
+    public class DirectionProvider : IDirectionProvider, IClean
     {
+        private readonly IAsteroidEnding _asteroidEnding;
         private Vector2 _direction;
 
         public DirectionProvider(IAsteroidEnding asteroidEnding)
         {
-            asteroidEnding.GetEndPosition += OnAsteroidEnding;
+            _asteroidEnding = asteroidEnding;
+            _asteroidEnding.GetEndPosition += OnAsteroidEnding;
         }
 
         private void OnAsteroidEnding(Vector2 endPosition)
@@ -20,6 +23,11 @@ namespace Asteroids.Movement.Direction
         public Vector2 GetDirection()
         {
             return _direction;
+        }
+
+        public void Clean()
+        {
+            _asteroidEnding.GetEndPosition -= OnAsteroidEnding;
         }
     }
 }

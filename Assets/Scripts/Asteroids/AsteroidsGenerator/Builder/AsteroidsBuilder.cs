@@ -13,8 +13,8 @@ namespace Asteroids.AsteroidsGenerator.Builder
     public sealed class AsteroidsBuilder
     {
         private readonly IAsteroidsStatsProvider _asteroidsStatsProvider;
-        private readonly Asteroid _prefab;
         private readonly IAsteroidEnding _asteroidEnding;
+        private readonly Asteroid _prefab;
         
         private AsteroidsStats Stats => _asteroidsStatsProvider.Stats;
 
@@ -62,21 +62,20 @@ namespace Asteroids.AsteroidsGenerator.Builder
         private readonly IAsteroidEnding _asteroidEnding;
 
         private AsteroidsStats Stats => _asteroidsStatsProvider.Stats;
-        
-        public SmallAsteroidsBuilder(Asteroid prefab, IAsteroidsStatsProvider asteroidsStatsProvider, 
+
+        public SmallAsteroidsBuilder(IAsteroidsStatsProvider asteroidsStatsProvider, Asteroid prefab,
             IAsteroidEnding asteroidEnding)
         {
             _asteroidsStatsProvider = asteroidsStatsProvider;
             _asteroidEnding = asteroidEnding;
             _prefab = prefab;
-            
-            Asteroid.Died += BuildAsteroid;
         }
 
-        private void BuildAsteroid()
+        public Asteroid BuildAsteroid()
         {
             var instance = Object.Instantiate(_prefab);
             InitializeAsteroid(instance);
+            return instance;
         }
         
         private void InitializeAsteroid(Asteroid asteroid)
@@ -86,7 +85,7 @@ namespace Asteroids.AsteroidsGenerator.Builder
             var damage = Stats.Damage.GetRandomValue();
             var killPoints = Stats.KillPoints.GetRandomValue();
 
-            asteroid.Initialize(health, movement, killPoints, damage);
+            asteroid.Initialize(health, movement, killPoints, damage, true);
         }
         
         private Health GetHealth()
@@ -114,8 +113,9 @@ namespace Asteroids.AsteroidsGenerator.Builder
             _gameArea = gameArea;
         }
 
-        public void PlaceAsteroid(Asteroid asteroid)
+        public void PlaceAsteroid(Asteroid asteroid, Vector2 position)
         {
+            asteroid.transform.position = position;
             _endPosition = _gameArea.GetRandomEndPosition();
             GetEndPosition?.Invoke(_endPosition);
         }

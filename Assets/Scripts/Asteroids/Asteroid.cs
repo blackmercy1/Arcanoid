@@ -12,7 +12,7 @@ namespace Asteroids
     public class Asteroid : PooledObject, IDamageable, IFixedUpdate, ICollision
     {
         public event Action<IFixedUpdate> UpdateFixedRemoveRequested;
-        public static event Action Died;
+        public static event Action<Vector2> Died;
         
         public event Action<int> Scored;
         
@@ -23,12 +23,15 @@ namespace Asteroids
         
         private int _killPoints;
         private int _damage;
+
+        private bool _destroyed;
         
-        public void Initialize(Health health, AsteroidsMovement movement, int killPoints, int damage)
+        public void Initialize(Health health, AsteroidsMovement movement, int killPoints, int damage, bool destroyed = false)
         {
             _damage = damage;
             _movement = movement;
             _killPoints = killPoints;
+            _destroyed = destroyed;
             
             _health = health;
             _health.Died += OnDied;
@@ -38,16 +41,20 @@ namespace Asteroids
         {
             Scored?.Invoke(_killPoints);
             Scored = null;
-            
-            Died?.Invoke();
-            DisableSelf();
-        }
 
-        private void BuildSmallAsteroid()
-        {
-            
+            if (!_destroyed)
+            {
+                Died?.Invoke(transform.position);
+                _health.Died -= OnDied;
+                DisableSelf();
+            }
+            else
+            {
+                UpdateFixedRemoveRequested?.Invoke(this);
+                Destroy(gameObject);
+            }
         }
-
+        
         private void DisableSelf()
         {
             UpdateFixedRemoveRequested?.Invoke(this);
