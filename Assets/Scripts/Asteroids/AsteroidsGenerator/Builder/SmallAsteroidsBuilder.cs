@@ -21,14 +21,13 @@ namespace Asteroids.AsteroidsGenerator.Builder
             _asteroidsStatsProvider = asteroidsStatsProvider;
             _asteroidEnding = asteroidEnding;
             _prefab = prefab;
-            
-            Asteroid.Died += BuildAsteroid;
         }
 
-        private void BuildAsteroid()
+        public Asteroid BuildAsteroid()
         {
             var instance = Object.Instantiate(_prefab);
             InitializeAsteroid(instance);
+            return instance;
         }
         
         private void InitializeAsteroid(Asteroid asteroid)

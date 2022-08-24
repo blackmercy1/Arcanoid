@@ -22,5 +22,10 @@ namespace Asteroids.AsteroidsGenerator.Builder
             _endPosition = _gameArea.GetRandomEndPosition();
             GetEndPosition?.Invoke(_endPosition);
         }
+
+        public void PlaceAsteroid(Asteroid asteroid, Vector2 position = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
