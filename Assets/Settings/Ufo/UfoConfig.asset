@@ -23,6 +23,6 @@ MonoBehaviour:
       _min: 100
       _max: 100
     _speed:
-      _min: 1000
-      _max: 1000
+      _min: 2000
+      _max: 2000
   _ufoPrefab: {fileID: 1601486517920054553, guid: f8ab838b397734b94ae5942d695c929e, type: 3}
