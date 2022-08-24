@@ -10,18 +10,22 @@ namespace MainPlayer
 {
     public sealed class Player : IUpdate, IFixedUpdate, IClean, IDamageable
     {
-        public event Action Died;
         public event Action<IFixedUpdate> UpdateFixedRemoveRequested;
         public event Action<IUpdate> UpdateRemoveRequested;
+        public event Action<Vector2> PlayerChangedPosition;
         
-        private readonly Health _health;
+        public event Action Died;
+        
+        public double OverclockingSpeed;
+        
         private readonly PlayerInputFromKeyboard _playerInputFromKeyboard;
         private readonly PlayerSettingsConfig _playerSettingsConfig;
         private readonly Transform _playerTransform;
+        private readonly Health _health;
 
         private readonly PlayerShooter _shooter;
-
         private readonly int _hitPoints;
+
         private PlayerMovement _movement;
 
         public Player(PlayerInputFromKeyboard playerInputFromKeyboard, PlayerSettingsConfig playerSettingsConfig
@@ -78,11 +82,12 @@ namespace MainPlayer
         {
             _movement = GetMovement();
             _movement.Move(fixedDeltaTime);
+            PlayerChangedPosition?.Invoke(_playerTransform.position);
         }
 
         private PlayerMovement GetMovement()
         {
-            return new PlayerMovement(_playerInputFromKeyboard, _playerSettingsConfig, _playerTransform);
+            return new PlayerMovement(_playerInputFromKeyboard, _playerSettingsConfig, _playerTransform, this);
         }
 
         private PlayerShooter GetShooter(Transform gunHolder)

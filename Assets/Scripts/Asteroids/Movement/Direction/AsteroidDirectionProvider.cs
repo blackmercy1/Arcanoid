@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Asteroids.Movement.Direction
 {
-    public class DirectionProvider : IDirectionProvider
+    public class AsteroidDirectionProvider : IDirectionProvider
     {
         private Vector2 _direction;
 
-        public DirectionProvider(IAsteroidEnding asteroidEnding)
+        public AsteroidDirectionProvider(IAsteroidEnding asteroidEnding)
         {
             asteroidEnding.GetEndPosition += OnAsteroidEnding;
         }

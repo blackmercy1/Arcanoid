@@ -4,52 +4,52 @@ using Asteroids.Stats;
 using Asteroids.Stats.Decorators;
 using Stats;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Asteroids.AsteroidsGenerator.Builder
 {
-    public sealed class AsteroidsBuilder
+    public class SmallAsteroidsBuilder
     {
-        private readonly IAsteroidsStatsProvider _asteroidsStatsProvider;
         private readonly Asteroid _prefab;
+        private readonly IAsteroidsStatsProvider _asteroidsStatsProvider;
         private readonly IAsteroidEnding _asteroidEnding;
-        
-        private AsteroidsStats stats => _asteroidsStatsProvider.Stats;
 
-        public AsteroidsBuilder(IAsteroidsStatsProvider asteroidsStatsProvider, Asteroid prefab,
+        private AsteroidsStats Stats => _asteroidsStatsProvider.Stats;
+        
+        public SmallAsteroidsBuilder(Asteroid prefab, IAsteroidsStatsProvider asteroidsStatsProvider, 
             IAsteroidEnding asteroidEnding)
         {
             _asteroidsStatsProvider = asteroidsStatsProvider;
-            _prefab = prefab;
             _asteroidEnding = asteroidEnding;
+            _prefab = prefab;
+            
+            Asteroid.Died += BuildAsteroid;
         }
 
-        public Asteroid BuildAsteroid()
+        private void BuildAsteroid()
         {
             var instance = Object.Instantiate(_prefab);
             InitializeAsteroid(instance);
-            return instance;
         }
-
-        public void InitializeAsteroid(Asteroid asteroid)
+        
+        private void InitializeAsteroid(Asteroid asteroid)
         {
             var health = GetHealth();
             var movement = GetMovement(asteroid);
-            var damage = stats.Damage.GetRandomValue();
-            var killPoints = stats.KillPoints.GetRandomValue();
+            var damage = Stats.Damage.GetRandomValue();
+            var killPoints = Stats.KillPoints.GetRandomValue();
 
             asteroid.Initialize(health, movement, killPoints, damage);
         }
-
+        
         private Health GetHealth()
         {
-            return new Health(stats.HitPoints.GetRandomValue());
+            return new Health(Stats.HitPoints.GetRandomValue());
         }
 
         private AsteroidsMovement GetMovement(Component asteroid)
         {
             var directionProvider = new AsteroidDirectionProvider(_asteroidEnding);
-            return new AsteroidsMovement(asteroid.transform, stats.Speed.GetRandomValue(), directionProvider);
+            return new AsteroidsMovement(asteroid.transform, Stats.Speed.GetRandomValue(), directionProvider);
         }
     }
 }

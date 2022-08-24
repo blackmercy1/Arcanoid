@@ -48,7 +48,7 @@ namespace Installers
         private IAsteroidsStatsProvider CreateStatsProvider(GameUpdates gameUpdates)
         {
             var stopWatch = new StopWatch();
-            var statsProvider = new TimeScalingSpeed(_asteroidsConfig, _animationCurve, stopWatch);
+            var statsProvider = new TimeScalingSpeedAsteroid(_asteroidsConfig, _animationCurve, stopWatch);
 
             gameUpdates.AddToUpdateList(stopWatch);
 

@@ -7,8 +7,8 @@ namespace Asteroids.Ranges
     [Serializable]
     public struct FloatRange
     {
-        [SerializeField, Range(0, 100)] private float _min;
-        [SerializeField, Range(0, 100)] private float _max;
+        [SerializeField, Range(0, 2000)] private float _min;
+        [SerializeField, Range(0, 2000)] private float _max;
 
         public float Min => _min;
         public float Max => _max;
