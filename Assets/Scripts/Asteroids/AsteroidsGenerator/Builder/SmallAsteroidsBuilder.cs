@@ -15,7 +15,7 @@ namespace Asteroids.AsteroidsGenerator.Builder
 
         private AsteroidsStats Stats => _asteroidsStatsProvider.Stats;
         
-        public SmallAsteroidsBuilder(Asteroid prefab, IAsteroidsStatsProvider asteroidsStatsProvider, 
+        public SmallAsteroidsBuilder(IAsteroidsStatsProvider asteroidsStatsProvider, Asteroid prefab, 
             IAsteroidEnding asteroidEnding)
         {
             _asteroidsStatsProvider = asteroidsStatsProvider;

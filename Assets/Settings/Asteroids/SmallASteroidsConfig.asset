@@ -26,4 +26,4 @@ MonoBehaviour:
       _min: 0.5
       _max: 0.5
   _prefab: {fileID: 5860329546259834942, guid: c2aa7227d0bd8a243ae5b5e90104a694, type: 3}
-  _destroyedParts: 2
+  _destroyedParts: 1

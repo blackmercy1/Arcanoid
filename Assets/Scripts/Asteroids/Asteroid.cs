@@ -9,7 +9,7 @@ using UpdatesSystem;
 namespace Asteroids
 {
     [RequireComponent(typeof(CircleCollider2D))]
-    public class Asteroid : PooledObject, IDamageable, IFixedUpdate, ICollision
+    public class Asteroid : PooledObject, IDamageable, IFixedUpdate, ICollision, IScoreProvider
     {
         public event Action<IFixedUpdate> UpdateFixedRemoveRequested;
         public static event Action<Vector2> Died;
@@ -89,5 +89,10 @@ namespace Asteroids
                 damageable.TakeDamage(_damage);
             }
         }
+    }
+
+    public interface IScoreProvider
+    {
+        public event Action<int> Scored;
     }
 }

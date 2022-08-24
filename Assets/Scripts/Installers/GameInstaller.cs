@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game;
 using GameAreas;
 using UnityEngine;
@@ -35,14 +36,25 @@ namespace Installers
             var playerTransform = player.GetPlayerTransform();
             var playerSpeed = player.GetSpeed();
             var statistics = new Statistics(laserStats, playerTransform, playerSpeed);
-            _gameUpdates.AddToUpdateList(statistics);
             
+            _gameUpdates.AddToUpdateList(statistics);
             _uiInstaller.Initialize(statistics);
+            
             var gameArea = new GameArea(_cameraPrefab, _leftBorder, _rightBorder, _topBorder, _downBorder);
             var asteroidsGenerator = _asteroidsGeneratorInstaller.Install(gameArea, _gameUpdates);
             var ufoGenerator = _ufoGeneratorInstaller.Install(gameArea, _gameUpdates, player);
-            
-            var game = new GameControl(player, gameArea, _gameUpdates, _fixedGameUpdates, asteroidsGenerator, ufoGenerator);
+
+            var score = new Score(asteroidsGenerator, ufoGenerator, 0);
+            var ui = _uiInstaller.Install(score, _cameraPrefab);
+
+            var cleanUps = new List<IClean>
+            {
+                player, ui, _gameUpdates, _fixedGameUpdates, asteroidsGenerator, ufoGenerator, score
+            };
+
+            var endGameOperation = new EndGameOperation(cleanUps, score, ui);
+            var game = new GameControl(player, gameArea, _gameUpdates, _fixedGameUpdates, asteroidsGenerator, 
+                ufoGenerator, endGameOperation);
             game.Start();
 
             DestroySelf();

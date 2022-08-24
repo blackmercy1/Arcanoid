@@ -8,7 +8,7 @@ using Vector2 = System.Numerics.Vector2;
 
 namespace Asteroids.AsteroidsGenerator.Pool
 {
-    public class Ufo : PooledObject, IFixedUpdate, IDamageable
+    public class Ufo : PooledObject, IFixedUpdate, IDamageable, IScoreProvider
     {
         public event Action<IFixedUpdate> UpdateFixedRemoveRequested;
 

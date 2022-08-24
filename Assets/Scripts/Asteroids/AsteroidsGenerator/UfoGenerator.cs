@@ -1,6 +1,7 @@
 using System;
 using Asteroids.AsteroidsGenerator.Pool;
 using Common;
+using Unity.VisualScripting;
 using UpdatesSystem;
 
 namespace Asteroids.AsteroidsGenerator
@@ -17,8 +18,8 @@ namespace Asteroids.AsteroidsGenerator
         {
             _ufoPlacer = ufoPlacer;
             _ufoProvider = ufoProvider;
-            
             _timer = timer;
+            
             _timer.TimIsUp += SpawnUfo;
             _timer.Resume();
         }
@@ -33,7 +34,8 @@ namespace Asteroids.AsteroidsGenerator
 
         public void Clean()
         {
-            throw new NotImplementedException();
+            _timer.TimIsUp -= SpawnUfo;
+            _timer.Clean();
         }
     }
 }

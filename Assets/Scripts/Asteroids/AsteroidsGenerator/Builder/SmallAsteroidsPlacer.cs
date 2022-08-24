@@ -17,15 +17,11 @@ namespace Asteroids.AsteroidsGenerator.Builder
             _gameArea = gameArea;
         }
 
-        public void PlaceAsteroid(Asteroid asteroid)
+        public void PlaceAsteroid(Asteroid asteroid, Vector2 position)
         {
+            asteroid.transform.position = position;
             _endPosition = _gameArea.GetRandomEndPosition();
             GetEndPosition?.Invoke(_endPosition);
-        }
-
-        public void PlaceAsteroid(Asteroid asteroid, Vector2 position = default)
-        {
-            throw new NotImplementedException();
         }
     }
 }

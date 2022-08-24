@@ -2,6 +2,7 @@ using Asteroids;
 using Asteroids.AsteroidsGenerator;
 using Asteroids.AsteroidsGenerator.Pool;
 using GameAreas;
+using Installers;
 using MainPlayer;
 using UpdatesSystem;
 
@@ -15,9 +16,10 @@ namespace Game
         private readonly FixedGameUpdates _fixedGameUpdates;
         private readonly AsteroidGenerator _asteroidGenerator;
         private readonly UfoGenerator _ufoGenerator;
+        private readonly EndGameOperation _endGameOperation;
 
         public GameControl(Player player, GameArea gameArea, GameUpdates gameUpdates, FixedGameUpdates fixedGameUpdates,
-            AsteroidGenerator asteroidGenerator, UfoGenerator ufoGenerator)
+            AsteroidGenerator asteroidGenerator, UfoGenerator ufoGenerator, EndGameOperation endGameOperation)
         {
             _player = player;
             _gameArea = gameArea;
@@ -25,6 +27,7 @@ namespace Game
             _fixedGameUpdates = fixedGameUpdates;
             _asteroidGenerator = asteroidGenerator;
             _ufoGenerator = ufoGenerator;
+            _endGameOperation = endGameOperation;
 
             _player.Died += EndGame;
         }
@@ -53,6 +56,8 @@ namespace Game
             _gameUpdates.StopUpdate();
             _fixedGameUpdates.StopUpdate();
             //остановить инпут
+            
+            _endGameOperation.Execute();
         }
 
         public void Clean()
