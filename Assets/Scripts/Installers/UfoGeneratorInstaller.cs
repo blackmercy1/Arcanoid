@@ -1,12 +1,15 @@
 using Asteroids.AsteroidsGenerator;
 using Asteroids.AsteroidsGenerator.Builder;
-using Asteroids.AsteroidsGenerator.Builder.Configs;
-using Asteroids.AsteroidsGenerator.Pool;
 using Asteroids.Ranges;
 using Asteroids.Stats.Decorators.Realization;
 using Common;
 using GameAreas;
 using MainPlayer;
+using Ufos.UfoGenerator.Builder;
+using Ufos.UfoGenerator.Builder.Configs;
+using Ufos.UfoGenerator.Pool;
+using Ufos.UfoGenerator.Stats.Decorators;
+using Ufos.UfoGenerator.Stats.Decorators.Realization;
 using UnityEngine;
 using UpdatesSystem;
 

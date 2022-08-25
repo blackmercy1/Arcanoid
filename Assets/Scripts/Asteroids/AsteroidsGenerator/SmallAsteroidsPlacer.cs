@@ -2,7 +2,7 @@ using System;
 using GameAreas;
 using UnityEngine;
 
-namespace Asteroids.AsteroidsGenerator.Builder
+namespace Asteroids.AsteroidsGenerator
 {
     public sealed class SmallAsteroidsPlacer : IAsteroidsPlacer, IAsteroidEnding
     {

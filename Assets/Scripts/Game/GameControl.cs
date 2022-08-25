@@ -1,9 +1,10 @@
 using Asteroids;
 using Asteroids.AsteroidsGenerator;
-using Asteroids.AsteroidsGenerator.Pool;
 using GameAreas;
 using Installers;
 using MainPlayer;
+using Ufos;
+using Ufos.UfoGenerator.Builder;
 using UpdatesSystem;
 
 namespace Game

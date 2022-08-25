@@ -4,7 +4,7 @@ using Stats;
 using UnityEngine;
 
 //Marker for collision
-namespace MainPlayer
+namespace MainPlayer.Collision
 {
     public class PlayerMarker : MonoBehaviour, ICollision, IDamageable
     {

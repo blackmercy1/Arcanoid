@@ -1,6 +1,7 @@
 using System;
 using Asteroids;
 using Asteroids.AsteroidsGenerator;
+using Ufos.UfoGenerator.Builder;
 using UpdatesSystem;
 
 namespace Installers

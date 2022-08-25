@@ -1,4 +1,4 @@
-namespace Asteroids.AsteroidsGenerator.Pool
+namespace Ufos.UfoGenerator.Pool
 {
     public interface IUfoProvider
     {

@@ -1,7 +1,7 @@
 using Stats;
 using UnityEngine;
 
-namespace MainPlayer
+namespace MainPlayer.Shooter
 {
     public class LaserAmmo : MonoBehaviour
     {

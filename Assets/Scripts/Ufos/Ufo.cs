@@ -1,12 +1,14 @@
 using System;
+using Asteroids;
 using Asteroids.AsteroidsGenerator.Builder;
 using Pools;
 using Stats;
+using Ufos.Movement;
 using UnityEngine;
 using UpdatesSystem;
 using Vector2 = System.Numerics.Vector2;
 
-namespace Asteroids.AsteroidsGenerator.Pool
+namespace Ufos
 {
     public class Ufo : PooledObject, IFixedUpdate, IDamageable, IScoreProvider
     {

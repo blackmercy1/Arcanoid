@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MainPlayer
+namespace Common
 {
     public class Instantiater : MonoBehaviour
     {

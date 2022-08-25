@@ -1,6 +1,6 @@
 using System;
 
-namespace MainPlayer
+namespace MainPlayer.Shooter
 {
     public interface ILaserStatistics
     {

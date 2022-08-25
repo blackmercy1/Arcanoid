@@ -1,5 +1,3 @@
-using Asteroids.AsteroidsGenerator.Builder;
-
 namespace Asteroids.Stats.Decorators
 {
     //переделать на generic
@@ -15,19 +13,5 @@ namespace Asteroids.Stats.Decorators
         public AsteroidsStats Stats => GetStatsInternal();
 
         protected abstract AsteroidsStats GetStatsInternal();
-    }
-    
-    public abstract class UfoStatsDecorator : IUfoStatsProvider
-    {
-        protected readonly IUfoStatsProvider UfoStatsProvider;
-
-        protected UfoStatsDecorator(IUfoStatsProvider ufoStatsProvider)
-        {
-            UfoStatsProvider = ufoStatsProvider;
-        }
-
-        public UfoStats Stats => GetStatsInternal();
-
-        protected abstract UfoStats GetStatsInternal();
     }
 }

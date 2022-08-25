@@ -1,8 +1,9 @@
 using System;
+using Common;
 using MainPlayer.PlayerSettings;
 using UnityEngine;
 
-namespace MainPlayer
+namespace MainPlayer.Shooter
 {
     public sealed class PlayerShooter : ILaserStatistics
     {

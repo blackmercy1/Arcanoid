@@ -1,11 +1,14 @@
-using Asteroids.AsteroidsGenerator.Pool;
-using Asteroids.Movement.Direction;
+using Asteroids.AsteroidsGenerator.Builder;
 using Asteroids.Stats;
 using MainPlayer;
 using Stats;
+using Ufos.Movement;
+using Ufos.Movement.Direction;
+using Ufos.UfoGenerator.Stats;
+using Ufos.UfoGenerator.Stats.Decorators;
 using UnityEngine;
 
-namespace Asteroids.AsteroidsGenerator.Builder
+namespace Ufos.UfoGenerator.Builder
 {
     public sealed class UfoBuilder
     {
@@ -48,26 +51,6 @@ namespace Asteroids.AsteroidsGenerator.Builder
         {
             var ufoDirectionProvider = new UfoDirectionProvider(_player);
             return new UfoMovement(asteroid.transform, stats.Speed.GetRandomValue(), ufoDirectionProvider);
-        }
-    }
-
-    public sealed class UfoDirectionProvider : IDirectionProvider
-    {
-        private Vector2 _direction;
-
-        public UfoDirectionProvider(Player player)
-        {
-            player.PlayerChangedPosition += ChangeDirection;
-        }
-
-        private void ChangeDirection(Vector2 position)
-        {
-            _direction = position;
-        }
-
-        public Vector2 GetDirection()
-        {
-            return _direction;
         }
     }
 }

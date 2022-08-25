@@ -1,13 +1,11 @@
 using System;
-using Asteroids.AsteroidsGenerator.Pool;
-using MainPlayer;
-using UnityEditorInternal;
+using MainPlayer.Shooter;
 using UnityEngine;
 using UpdatesSystem;
 
 namespace Installers
 {
-    public sealed class Statistics : IUpdate, IClean
+    public sealed class Statistics : IUpdate
     {
         public event Action<int> LaserAmmoChanged;
         public event Action<float> TimeToReloadLaserChanged;
@@ -20,8 +18,8 @@ namespace Installers
         
         private readonly Transform _playerTransform;
         private readonly ILaserStatistics _laserStatistics;
+        private readonly Vector2 _playerSpeed;
 
-        private Vector2 _playerSpeed;
         private int _laserAmmo;
 
         public Statistics(ILaserStatistics laserStatistics, Transform playerTransform, Vector3 playerSpeed)
@@ -43,17 +41,12 @@ namespace Installers
         {
             LaserAmmoChanged?.Invoke(laserAmmo);
         }
-        
+
         public void GameUpdate(float deltaTime)
         {
             PositionChanged?.Invoke(_playerTransform.position);
             RotationChanged?.Invoke(_playerTransform.rotation);
             SpeedChanged?.Invoke(_playerSpeed);
-        }
-        
-        public void Clean()
-        {
-            UpdateRemoveRequested?.Invoke(this);
         }
     }
 }

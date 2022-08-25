@@ -1,7 +1,6 @@
-using Asteroids.AsteroidsGenerator.Pool;
 using GameAreas;
 
-namespace Asteroids.AsteroidsGenerator
+namespace Ufos.UfoGenerator.Builder
 {
     public sealed class UfoPlacer : IUfoPlacer
     {

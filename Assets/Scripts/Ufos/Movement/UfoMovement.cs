@@ -1,10 +1,8 @@
-using System.Numerics;
-using Asteroids.AsteroidsGenerator.Pool;
 using Asteroids.Movement.Direction;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-namespace Asteroids.AsteroidsGenerator.Builder
+namespace Ufos.Movement
 {
     public sealed class UfoMovement
     {
@@ -24,8 +22,6 @@ namespace Asteroids.AsteroidsGenerator.Builder
         public void Move(float deltaTime, ref float elapsedTime)
         {
             _direction = _directionProvider.GetDirection();
-            // var translation = _direction * (_speed * deltaTime);c
-            // _ufoTransform.Translate(translation);
             elapsedTime += deltaTime;
             var percentageComplete = elapsedTime / _speed;
             _ufoTransform.position = Vector2.Lerp(_ufoTransform.position, _direction, percentageComplete);

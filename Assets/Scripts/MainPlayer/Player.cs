@@ -1,9 +1,12 @@
 using System;
+using MainPlayer.Collision;
 using MainPlayer.Input;
 using MainPlayer.PLayerMovement;
 using MainPlayer.PlayerSettings;
+using MainPlayer.Shooter;
 using Stats;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UpdatesSystem;
 
 namespace MainPlayer
@@ -21,19 +24,23 @@ namespace MainPlayer
         private readonly PlayerInputFromKeyboard _playerInputFromKeyboard;
         private readonly PlayerSettingsConfig _playerSettingsConfig;
         private readonly Transform _playerTransform;
+        private readonly InputAction _inputAction;
         private readonly Health _health;
 
         private readonly PlayerShooter _shooter;
         private readonly int _hitPoints;
 
         private PlayerMovement _movement;
+        private PlayerControls _playerControls;
 
         public Player(PlayerInputFromKeyboard playerInputFromKeyboard, PlayerSettingsConfig playerSettingsConfig
-            , Transform playerTransform, PlayerControls playerControls, PlayerMarker playerMarker, Transform gunHolder)
+            , Transform playerTransform, PlayerControls playerControls, PlayerMarker playerMarker, Transform gunHolder,
+            InputAction inputAction)
         {
             _playerInputFromKeyboard = playerInputFromKeyboard;
             _playerSettingsConfig = playerSettingsConfig;
             _playerTransform = playerTransform;
+            _inputAction = inputAction;
 
             InitInputControl(playerControls);
 
@@ -52,9 +59,11 @@ namespace MainPlayer
 
         private void InitInputControl(PlayerControls playerControls)
         {
-            playerControls.Enable();
-            playerControls.Player.Shoot.performed += _ => { TryToShoot(); };
-            playerControls.Player.LaserShoot.performed += _ => { TryToLaserShoot(); };
+            _playerControls = playerControls;
+            
+            _playerControls.Enable();
+            _playerControls.Player.Shoot.performed += _ => { TryToShoot(); };
+            _playerControls.Player.LaserShoot.performed += _ => { TryToLaserShoot(); };
         }
 
         private void TryToShoot()
@@ -104,7 +113,10 @@ namespace MainPlayer
         {
             UpdateRemoveRequested?.Invoke(this);
             UpdateFixedRemoveRequested?.Invoke(this);
+            
             _health.Died -= OnDied;
+            _playerControls.Disable();
+            _inputAction.Disable();
         }
 
         public Vector3 GetSpeed()

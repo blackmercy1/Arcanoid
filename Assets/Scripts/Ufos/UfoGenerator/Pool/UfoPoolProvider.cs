@@ -1,7 +1,7 @@
-using Asteroids.AsteroidsGenerator.Builder;
 using Pools;
+using Ufos.UfoGenerator.Builder;
 
-namespace Asteroids.AsteroidsGenerator.Pool
+namespace Ufos.UfoGenerator.Pool
 {
     public sealed class UfoPoolProvider : IUfoProvider
     {

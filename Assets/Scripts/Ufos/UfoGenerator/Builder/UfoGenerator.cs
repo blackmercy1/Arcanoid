@@ -1,10 +1,9 @@
 using System;
-using Asteroids.AsteroidsGenerator.Pool;
 using Common;
-using Unity.VisualScripting;
+using Ufos.UfoGenerator.Pool;
 using UpdatesSystem;
 
-namespace Asteroids.AsteroidsGenerator
+namespace Ufos.UfoGenerator.Builder
 {
     public sealed class UfoGenerator : IClean
     {

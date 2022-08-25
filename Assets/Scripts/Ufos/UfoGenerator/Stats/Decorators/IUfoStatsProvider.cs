@@ -1,6 +1,4 @@
-using Asteroids.Stats;
-
-namespace Asteroids.AsteroidsGenerator.Builder
+namespace Ufos.UfoGenerator.Stats.Decorators
 {
     public interface IUfoStatsProvider
     {

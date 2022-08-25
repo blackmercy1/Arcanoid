@@ -1,8 +1,10 @@
-using Asteroids.AsteroidsGenerator.Pool;
+using Asteroids.AsteroidsGenerator.Builder;
 using Asteroids.Stats;
+using Ufos.UfoGenerator.Stats;
+using Ufos.UfoGenerator.Stats.Decorators;
 using UnityEngine;
 
-namespace Asteroids.AsteroidsGenerator.Builder.Configs
+namespace Ufos.UfoGenerator.Builder.Configs
 {
     [CreateAssetMenu(menuName = "UfoConfig")]
     public sealed class UfoConfig : ScriptableObject, IUfoStatsProvider

@@ -1,4 +1,5 @@
 using MainPlayer;
+using MainPlayer.Collision;
 using MainPlayer.Input;
 using MainPlayer.PlayerSettings;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace Installers
         private Player CreatePlayer(PlayerInputFromKeyboard playerInputFromKeyboard)
         {
             var player = new Player(playerInputFromKeyboard, _playerSettingsConfig, _playerTransform, _playerControls,
-                _playerMarker, _gunHolder);
+                _playerMarker, _gunHolder, _inputAction);
             
             _gameUpdates.AddToUpdateList(player);
             _fixedGameUpdates.AddToUpdateList(player);
