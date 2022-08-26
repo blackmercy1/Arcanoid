@@ -34,8 +34,7 @@ namespace Installers
             
             var laserStats = player.GetGunStatistics();
             var playerTransform = player.GetPlayerTransform();
-            var playerSpeed = player.GetSpeed();
-            var statistics = new Statistics(laserStats, playerTransform, playerSpeed);
+            var statistics = new Statistics(laserStats, playerTransform, player);
             
             _gameUpdates.AddToUpdateList(statistics);
             _uiInstaller.Initialize(statistics);

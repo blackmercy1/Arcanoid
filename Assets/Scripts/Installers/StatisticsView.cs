@@ -39,7 +39,7 @@ namespace Installers
         private void StatisticsOnSpeedChanged(Vector2 speed)
         {
             var speedRound = Mathf.Sqrt((speed.x * speed.x) + (speed.y * speed.y));
-            _movementSpeed.text = Mathf.Round(speedRound).ToString(CultureInfo.InvariantCulture);
+            _movementSpeed.text = Mathf.Round(speedRound * 1000).ToString(CultureInfo.InvariantCulture);
         }
 
         private void StatisticsOnPositionChanged(Vector2 position)

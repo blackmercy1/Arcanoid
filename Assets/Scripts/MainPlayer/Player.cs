@@ -17,9 +17,11 @@ namespace MainPlayer
         public event Action<IUpdate> UpdateRemoveRequested;
         public event Action<Vector2> PlayerChangedPosition;
         public event Action Died;
+
+        public Vector2 PlayerSpeed => _speed;
         
         public double OverclockingSpeed;
-        
+
         private readonly PlayerInputFromKeyboard _playerInputFromKeyboard;
         private readonly PlayerSettingsConfig _playerSettingsConfig;
         private readonly Transform _playerTransform;
@@ -117,11 +119,6 @@ namespace MainPlayer
             _health.Died -= OnDied;
             _playerControls.Disable();
             _inputAction.Disable();
-        }
-
-        public Vector3 GetSpeed()
-        {
-            return _speed;
         }
 
         public ILaserStatistics GetGunStatistics()

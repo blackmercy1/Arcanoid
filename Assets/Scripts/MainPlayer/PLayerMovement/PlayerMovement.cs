@@ -37,9 +37,9 @@ namespace MainPlayer.PLayerMovement
 
             var floatInput = input.y == 0 ? DecreaseSpeed() : OverclockSpeed();
 
-            _speed = _playerTransform.right * ((float)floatInput * deltaTime * _playerSettingsConfig.MovementSpeed);
+            speed = _playerTransform.right * ((float)floatInput * deltaTime * _playerSettingsConfig.MovementSpeed);
 
-            _playerTransform.transform.localPosition += _speed;
+            _playerTransform.transform.localPosition += (Vector3)speed;
         }
 
         private double OverclockSpeed()
@@ -62,7 +62,7 @@ namespace MainPlayer.PLayerMovement
             return _player.OverclockingSpeed;
         }
 
-        public Vector3 GetSpeed()
+        public Vector3 GetPlayer()
         {
             return _speed;
         }
@@ -70,6 +70,6 @@ namespace MainPlayer.PLayerMovement
 
     public interface ISpeed
     {
-        Vector3 GetSpeed();
+        Vector3 GetPlayer();
     }
 }
