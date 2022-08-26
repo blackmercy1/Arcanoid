@@ -16,7 +16,6 @@ namespace MainPlayer
         public event Action<IFixedUpdate> UpdateFixedRemoveRequested;
         public event Action<IUpdate> UpdateRemoveRequested;
         public event Action<Vector2> PlayerChangedPosition;
-        
         public event Action Died;
         
         public double OverclockingSpeed;
@@ -32,7 +31,8 @@ namespace MainPlayer
 
         private PlayerMovement _movement;
         private PlayerControls _playerControls;
-
+        private Vector2 _speed;
+        
         public Player(PlayerInputFromKeyboard playerInputFromKeyboard, PlayerSettingsConfig playerSettingsConfig
             , Transform playerTransform, PlayerControls playerControls, PlayerMarker playerMarker, Transform gunHolder,
             InputAction inputAction)
@@ -90,7 +90,7 @@ namespace MainPlayer
         public void FixedGameUpdate(float fixedDeltaTime)
         {
             _movement = GetMovement();
-            _movement.Move(fixedDeltaTime);
+            _movement.Move(fixedDeltaTime, ref _speed);
             PlayerChangedPosition?.Invoke(_playerTransform.position);
         }
 
@@ -121,7 +121,7 @@ namespace MainPlayer
 
         public Vector3 GetSpeed()
         {
-            return _movement.GetSpeed();
+            return _speed;
         }
 
         public ILaserStatistics GetGunStatistics()

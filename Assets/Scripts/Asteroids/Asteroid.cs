@@ -25,6 +25,7 @@ namespace Asteroids
         private int _damage;
 
         private bool _destroyed;
+        private bool _multiCollision;
         
         public void Initialize(Health health, AsteroidsMovement movement, int killPoints, int damage, bool destroyed = false)
         {
@@ -35,22 +36,27 @@ namespace Asteroids
             
             _health = health;
             _health.Died += OnDied;
+            _multiCollision = false;
         }
 
         private void OnDied()
         {
+            if (_multiCollision)
+                return;
+            
             Scored?.Invoke(_killPoints);
             Scored = null;
 
             if (!_destroyed)
             {
                 Died?.Invoke(transform.position);
-                _health.Died -= OnDied;
                 DisableSelf();
+                _multiCollision = true;
             }
             else
             {
                 UpdateFixedRemoveRequested?.Invoke(this);
+                _health.Died -= OnDied;
                 Destroy(gameObject);
             }
         }

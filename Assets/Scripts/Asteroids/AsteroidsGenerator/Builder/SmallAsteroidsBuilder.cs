@@ -37,7 +37,7 @@ namespace Asteroids.AsteroidsGenerator.Builder
             var damage = Stats.Damage.GetRandomValue();
             var killPoints = Stats.KillPoints.GetRandomValue();
 
-            asteroid.Initialize(health, movement, killPoints, damage);
+            asteroid.Initialize(health, movement, killPoints, damage, true);
         }
         
         private Health GetHealth()

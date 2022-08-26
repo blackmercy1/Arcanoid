@@ -18,8 +18,6 @@ namespace MainPlayer.PLayerMovement
 
         private float _angleRotation;
 
-        private int _gay;
-
         public PlayerMovement(PlayerInputFromKeyboard playerInputFromKeyboard,
             PlayerSettingsConfig playerSettingsConfig, Transform playerTransform, Player player)
         {
@@ -31,7 +29,7 @@ namespace MainPlayer.PLayerMovement
             _playerRotate = new PlayerRotate(_playerSettingsConfig);
         }
 
-        public void Move(float deltaTime)
+        public void Move(float deltaTime, ref Vector2 speed)
         {
             var input = _playerInputFromKeyboard.PlayerInputDirection.normalized;
 

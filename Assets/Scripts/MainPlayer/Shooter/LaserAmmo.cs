@@ -7,7 +7,7 @@ namespace MainPlayer.Shooter
     {
         private int _damage = 100;      
         
-        private void Update()
+        private void FixedUpdate()
         {
             Move();
         }
