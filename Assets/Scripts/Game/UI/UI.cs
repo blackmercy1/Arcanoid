@@ -1,7 +1,7 @@
+using Game.Operations;
 using UnityEngine;
 using UpdatesSystem;
-
-namespace Installers
+namespace Game.UI
 {
     public class UI : IClean
     {

@@ -1,15 +1,16 @@
 using System.Collections.Generic;
+using Game.UI;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.Operations
 {
     public class EndGameOperation
     {
         private readonly List<IClean> _cleanUps;
         private readonly Score _score;
-        private readonly UI _ui;
+        private readonly UI.UI _ui;
 
-        public EndGameOperation(List<IClean> cleanUps, Score score, UI ui)
+        public EndGameOperation(List<IClean> cleanUps, Score score, UI.UI ui)
         {
             _cleanUps = cleanUps;
             _score = score;

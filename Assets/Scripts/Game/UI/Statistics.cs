@@ -4,7 +4,7 @@ using MainPlayer.Shooter;
 using UnityEngine;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.UI
 {
     public sealed class Statistics : IUpdate
     {

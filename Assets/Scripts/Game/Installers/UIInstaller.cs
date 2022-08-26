@@ -1,7 +1,8 @@
+using Game.UI;
 using MainPlayer.PlayerSettings;
 using UnityEngine;
 
-namespace Installers
+namespace Game.Installers
 {
     public class UIInstaller : MonoBehaviour
     {
@@ -17,19 +18,19 @@ namespace Installers
             _statisticsView.Initialize(statistics, _playerSettingsConfig);
         }
 
-        public UI Install(Score score, Camera camera)
+        public UI.UI Install(Score score, Camera camera)
         {
             return CreateUI(score, camera);
         }
 
-        private UI CreateUI(Score score, Camera camera)
+        private UI.UI CreateUI(Score score, Camera camera)
         {
             var canvas = Instantiate(_canvas);
 
             var endGameView = Instantiate(_endGameView, canvas.transform);
             endGameView.gameObject.SetActive(false);
 
-            var ui = new UI(canvas, endGameView, camera);
+            var ui = new UI.UI(canvas, endGameView, camera);
             return ui;
         }
     }

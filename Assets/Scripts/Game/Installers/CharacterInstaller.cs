@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.Installers
 {
     public sealed class CharacterInstaller : MonoBehaviour
     {

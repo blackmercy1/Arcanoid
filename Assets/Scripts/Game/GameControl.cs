@@ -1,7 +1,7 @@
 using Asteroids;
 using Asteroids.AsteroidsGenerator;
+using Game.Operations;
 using GameAreas;
-using Installers;
 using MainPlayer;
 using Ufos;
 using Ufos.UfoGenerator.Builder;

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.UI
 {
     public sealed class StatisticsView : MonoBehaviour, IClean
     {

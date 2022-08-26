@@ -1,5 +1,5 @@
 using System;
-using Asteroids.Ranges;
+using Ranges;
 using UnityEngine;
 
 namespace Asteroids.Stats
@@ -30,12 +30,12 @@ namespace Asteroids.Stats
             _speed = new FloatRange(speed, speed);
         }
 
-        public static AsteroidsStats operator +(AsteroidsStats ballStats1, AsteroidsStats ballStats2)
+        public static AsteroidsStats operator +(AsteroidsStats asteroidStats1, AsteroidsStats asteroidStats2)
         {
-            var speed = ballStats1.Speed + ballStats2.Speed;
-            var damage = ballStats1.Damage + ballStats2.Damage;
-            var hitPoints = ballStats1.HitPoints + ballStats2.HitPoints;
-            var killPoints = ballStats1.KillPoints + ballStats2.KillPoints;
+            var speed = asteroidStats1.Speed + asteroidStats2.Speed;
+            var damage = asteroidStats1.Damage + asteroidStats2.Damage;
+            var hitPoints = asteroidStats1.HitPoints + asteroidStats2.HitPoints;
+            var killPoints = asteroidStats1.KillPoints + asteroidStats2.KillPoints;
 
             return new AsteroidsStats(killPoints, damage, hitPoints, speed);
         }

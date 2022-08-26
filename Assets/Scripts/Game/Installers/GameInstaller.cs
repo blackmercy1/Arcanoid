@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using Game;
+using Game.Operations;
+using Game.UI;
 using GameAreas;
 using UnityEngine;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.Installers
 {
     public sealed class GameInstaller : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace Installers
+namespace Game.Operations
 {
     public class NewGameOperation
     {

@@ -1,8 +1,9 @@
+using Game.Operations;
 using TMPro;
 using UnityEngine;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.UI
 {
     public class EndGameView : MonoBehaviour, IClean
     {

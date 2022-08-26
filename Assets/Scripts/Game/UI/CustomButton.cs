@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Installers
+namespace Game.UI
 {
     public class CustomButton : MonoBehaviour, IPointerClickHandler
     {

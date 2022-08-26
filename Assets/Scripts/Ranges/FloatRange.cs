@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Asteroids.Ranges
+namespace Ranges
 {
     [Serializable]
     public struct FloatRange

@@ -1,5 +1,5 @@
 using System;
-using Asteroids.Ranges;
+using Ranges;
 using UnityEngine;
 
 namespace MainPlayer.Stats

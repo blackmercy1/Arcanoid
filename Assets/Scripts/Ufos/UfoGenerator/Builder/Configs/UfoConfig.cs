@@ -1,5 +1,3 @@
-using Asteroids.AsteroidsGenerator.Builder;
-using Asteroids.Stats;
 using Ufos.UfoGenerator.Stats;
 using Ufos.UfoGenerator.Stats.Decorators;
 using UnityEngine;

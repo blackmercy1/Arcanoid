@@ -4,7 +4,7 @@ using Asteroids.AsteroidsGenerator;
 using Ufos.UfoGenerator.Builder;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.UI
 {
     public class Score : IClean
     {

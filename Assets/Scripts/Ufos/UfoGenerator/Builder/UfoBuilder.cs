@@ -1,5 +1,3 @@
-using Asteroids.AsteroidsGenerator.Builder;
-using Asteroids.Stats;
 using MainPlayer;
 using Stats;
 using Ufos.Movement;

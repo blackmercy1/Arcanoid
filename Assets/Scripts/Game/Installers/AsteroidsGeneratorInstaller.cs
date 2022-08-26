@@ -2,15 +2,15 @@ using Asteroids.AsteroidsGenerator;
 using Asteroids.AsteroidsGenerator.Builder;
 using Asteroids.AsteroidsGenerator.Builder.Configs;
 using Asteroids.AsteroidsGenerator.Pool;
-using Asteroids.Ranges;
 using Asteroids.Stats.Decorators;
 using Asteroids.Stats.Decorators.Realization;
 using Common;
 using GameAreas;
+using Ranges;
 using UnityEngine;
 using UpdatesSystem;
 
-namespace Installers
+namespace Game.Installers
 {
     public class AsteroidsGeneratorInstaller : MonoBehaviour
     {
